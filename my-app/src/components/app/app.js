@@ -137,25 +137,19 @@ export default class App extends Component {
     }
 
     sortByName() {
-        console.log('sortByName')
+        const ByNameData = this.state.data;
+        const sortNameData = ByNameData.sort((a, b) => a.nameListUser > b.nameListUser ? 1: -1);
+        this.setState({data : sortNameData})
     }
 
     sortByAge() {
         const ByAgeData = this.state.data;
-        const ageData = ByAgeData.map((item) => {
-            const sortAge = (item) =>  {
-                item.sort((a, b) => a.ageListUser > b.ageListUser ? 1 : -1);
-            };
-            console.log(item)
-            return (
-                item
-            );
-        });
-
+        const sortAgeData = ByAgeData.sort((a, b) => a.ageListUser > b.ageListUser ? 1 : -1);
+        this.setState({data : sortAgeData});
     }
 
     reset() {
-        console.log('reset')
+        console.log('rest');
     }
 
     onUpdateSearch(term) {
