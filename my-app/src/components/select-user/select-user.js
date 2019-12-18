@@ -1,28 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './select-user.css';
 
-export default class SelectUser extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
 
-        }
-    }
-    render() {
+ const SelectUser = ({character}) => {
+     const {img, nameListUser, ageListUser, phoneListUser} = character
         return (
             <div className="WrapSelectUser">
                 <div className="user">
                     <div className="img_user">
-                        <img src="../img/owl.svg" alt=""/>
+                        <img src={img} alt=""/>
                     </div>
                     <div className="name_user">
-                        <h2>Chad Snyder</h2>
+                        <h2>{nameListUser}</h2>
                     </div>
                 </div>
                 <div className="description_user">
                     <div className="age_user border">
                         <p>Age:</p>
-                        <p>28</p>
+                        <p>{ageListUser}</p>
                     </div>
                     <div className="fav_animal_user border">
                         <p>Favorite animal:</p>
@@ -30,7 +25,7 @@ export default class SelectUser extends Component {
                     </div>
                     <div className="phone_user border">
                         <p>Phone:</p>
-                        <p>8 (629) 653-9041</p>
+                        <p>{phoneListUser}</p>
                     </div>
                 </div>
                 <div className="favorite_phrase">
@@ -39,7 +34,9 @@ export default class SelectUser extends Component {
                 </div>
             </div>
         )
-    }
+
 
 }
+
+export default SelectUser
 

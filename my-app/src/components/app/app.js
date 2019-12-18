@@ -109,23 +109,26 @@ export default class App extends Component {
                     id: '14'
                 }
             ],
-            term: ''
+            term: '',
+
+            selectUser: null
         };
 
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
         this.sortByName = this.sortByName.bind(this);
         this.sortByAge = this.sortByAge.bind(this);
-        this.reset = this.reset.bind(this);
+        //this.reset = this.reset.bind(this);
     }
 
     searchPost(items, term) {
 
         if (term.length === 0) {
-            return items;
-
+            const data = items.sort((a, b) => +a.id > +b.id ? 1: -1);
+            return this.setState({data})
         }
 
-        return items.filter((item) => {
+
+        const data =  items.filter((item) => {
             return (
                 item.nameListUser.toLowerCase().indexOf(term.toLowerCase()) > -1 ||
                 item.ageListUser.indexOf(term) > -1 ||
@@ -133,6 +136,7 @@ export default class App extends Component {
 
             )
         })
+        this.setState({data})
 
     }
 
@@ -148,8 +152,10 @@ export default class App extends Component {
         this.setState({data : sortAgeData});
     }
 
-    reset() {
-        console.log('rest');
+    reset = () => {
+        this.setState({term: ''})
+        const {data, term} = this.state;
+        this.searchPost(data, term);
     }
 
     onUpdateSearch(term) {
@@ -157,10 +163,24 @@ export default class App extends Component {
 
     }
 
-    render() {
-        const {data, term} = this.state;
+    onCharSelected = id => {
+        this.setCharacter(id)
+    }
 
-        const visiblePosts = this.searchPost(data, term);
+    setCharacter = (id = 1) => {
+        const {data} = this.state
+        const res = data.filter(item => +item.id === +id)
+        const [char] = res
+        this.setState({selectUser: {...char}})
+    }
+
+
+    UNSAFE_componentWillMount() {
+        this.setCharacter()
+    }
+
+    render() {
+        const {data, selectUser} = this.state;
 
         return (
             <div className="app">
@@ -171,8 +191,8 @@ export default class App extends Component {
                     sortByAge={this.sortByAge}
                     sortByName={this.sortByName}/>
                 <div className="main-content">
-                    <SelectUser/>
-                    <UserList lists={visiblePosts}/>
+                    <SelectUser character={selectUser} />
+                    <UserList lists={data} showChar={this.onCharSelected} />
                 </div>
             </div>
         )

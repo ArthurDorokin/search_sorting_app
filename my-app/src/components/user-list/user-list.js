@@ -2,11 +2,13 @@ import React from 'react';
 import UserListItem from '../user-list-item';
 import './user-list.css';
 
-const UserList = ({lists}) => {
+const UserList = ({lists, showChar}) => {
 
     const elements = lists.map((item) => {
         return (
-            <div key={item.id} className="list-user-item">
+            <div onClick={() => showChar(item.id)}
+                 key={item.id}
+                 className="list-user-item">
                 <UserListItem
                     // img={item.img}
                     // nameListUser={item.nameListUser}
