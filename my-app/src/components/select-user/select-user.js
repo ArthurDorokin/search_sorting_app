@@ -3,7 +3,7 @@ import './select-user.css';
 
 
  const SelectUser = ({character}) => {
-     const {img, nameListUser, ageListUser, phoneListUser} = character
+     const {img, nameListUser, ageListUser, phoneListUser, textUser} = character
         return (
             <div className="WrapSelectUser">
                 <div className="user">
@@ -29,8 +29,7 @@ import './select-user.css';
                     </div>
                 </div>
                 <div className="favorite_phrase">
-                    <p><strong>Favorite phrase:</strong> Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko
-                        hojmaso ahe civ bapdedam.</p>
+                    <p><strong>Favorite phrase: </strong>{textUser}</p>
                 </div>
             </div>
         )

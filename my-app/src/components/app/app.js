@@ -13,100 +13,114 @@ export default class App extends Component {
                 {
                     img: '../img/owl.svg',
                     nameListUser: 'Chad Snyder',
-                    ageListUser: '28',
+                    ageListUser: 28,
                     phoneListUser: '8 (629) 653-9041',
-                    id: '1'
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 1
                 },
                 {
                     img: '../img/cat.svg',
                     nameListUser: 'Milton Warner',
-                    ageListUser: '11',
+                    ageListUser: 11,
                     phoneListUser: '8 (435) 653-9041',
-                    id: '2'
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 2
                 },
                 {
                     img: '../img/fox.svg',
                     nameListUser: 'Viola Hale',
-                    ageListUser: '22',
+                    ageListUser: 22,
                     phoneListUser: '8 (543) 653-9041',
-                    id: '3'
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 3
                 },
                 {
                     img: '../img/koala.svg',
                     nameListUser: 'Tyler Herrera',
-                    ageListUser: '34',
+                    ageListUser: 34,
                     phoneListUser: '8 (656) 653-9041',
-                    id: '4'
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 4
                 },
                 {
                     img: '../img/lion.svg',
                     nameListUser: 'Gabriel Howell',
-                    ageListUser: '12',
+                    ageListUser: '15',
                     phoneListUser: '8 (123) 653-9041',
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
                     id: '5'
                 },
                 {
                     img: '../img/penguin.svg',
                     nameListUser: 'Adelaide Jacobs',
-                    ageListUser: '34',
+                    ageListUser: 34,
                     phoneListUser: '8 (543) 653-9041',
-                    id: '6'
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 6
                 },
                 {
                     img: '../img/pig.svg',
                     nameListUser: 'James Diaz',
-                    ageListUser: '76',
+                    ageListUser: 76,
                     phoneListUser: '8 (875) 653-9041',
-                    id: '7'
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 7
                 },
                 {
                     img: '../img/raccoon.svg',
                     nameListUser: 'Vincent Sparks',
-                    ageListUser: '54',
+                    ageListUser: 54,
                     phoneListUser: '8 (986) 653-9041',
-                    id: '8'
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 8
                 },
                 {
                     img: '../img/sheep.svg',
                     nameListUser: 'Mark Rhodes',
-                    ageListUser: '12',
+                    ageListUser: 12,
                     phoneListUser: '8 (467) 653-9041',
-                    id: '9'
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 9
                 },
                 {
                     img: '../img/fox.svg',
                     nameListUser: 'Gordon Daniels',
-                    ageListUser: '32',
+                    ageListUser: 32,
                     phoneListUser: '8 (978) 653-9041',
-                    id: '10'
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 10
                 },
                 {
                     img: '../img/koala.svg',
                     nameListUser: 'Ella Parks',
-                    ageListUser: '43',
+                    ageListUser: 43,
                     phoneListUser: '8 (232) 653-9041',
-                    id: '11'
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 11
                 },
                 {
                     img: '../img/lion.svg',
                     nameListUser: 'Luis Jacobs',
-                    ageListUser: '45',
+                    ageListUser: 45,
                     phoneListUser: '8 (547) 653-9041',
-                    id: '12'
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 12
                 },
                 {
                     img: '../img/penguin.svg',
                     nameListUser: 'Phillip Daniels',
-                    ageListUser: '65',
+                    ageListUser: 65,
                     phoneListUser: '8 (629) 653-9041',
-                    id: '13'
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 13
                 },
                 {
                     img: '../img/cat.svg',
                     nameListUser: 'Hettie Soto',
-                    ageListUser: '67',
+                    ageListUser: 67,
                     phoneListUser: '8 (123) 653-9041',
-                    id: '14'
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 14
                 }
             ],
             term: '',
@@ -123,7 +137,7 @@ export default class App extends Component {
     searchPost(items, term) {
 
         if (term.length === 0) {
-            const data = items.sort((a, b) => +a.id > +b.id ? 1: -1);
+            const data = items.sort((a, b) => a.id > b.id ? 1: -1);
             return this.setState({data})
         }
 
@@ -169,7 +183,7 @@ export default class App extends Component {
 
     setCharacter = (id = 1) => {
         const {data} = this.state
-        const res = data.filter(item => +item.id === +id)
+        const res = data.filter(item => item.id === id)
         const [char] = res
         this.setState({selectUser: {...char}})
     }
