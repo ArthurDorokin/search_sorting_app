@@ -123,8 +123,121 @@ export default class App extends Component {
                     id: 14
                 }
             ],
+            dataDefault: [
+                {
+                    img: '../img/owl.svg',
+                    nameListUser: 'Chad Snyder',
+                    ageListUser: 28,
+                    phoneListUser: '8 (629) 653-9041',
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 1
+                },
+                {
+                    img: '../img/cat.svg',
+                    nameListUser: 'Milton Warner',
+                    ageListUser: 11,
+                    phoneListUser: '8 (435) 653-9041',
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 2
+                },
+                {
+                    img: '../img/fox.svg',
+                    nameListUser: 'Viola Hale',
+                    ageListUser: 22,
+                    phoneListUser: '8 (543) 653-9041',
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 3
+                },
+                {
+                    img: '../img/koala.svg',
+                    nameListUser: 'Tyler Herrera',
+                    ageListUser: 34,
+                    phoneListUser: '8 (656) 653-9041',
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 4
+                },
+                {
+                    img: '../img/lion.svg',
+                    nameListUser: 'Gabriel Howell',
+                    ageListUser: '15',
+                    phoneListUser: '8 (123) 653-9041',
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: '5'
+                },
+                {
+                    img: '../img/penguin.svg',
+                    nameListUser: 'Adelaide Jacobs',
+                    ageListUser: 34,
+                    phoneListUser: '8 (543) 653-9041',
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 6
+                },
+                {
+                    img: '../img/pig.svg',
+                    nameListUser: 'James Diaz',
+                    ageListUser: 76,
+                    phoneListUser: '8 (875) 653-9041',
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 7
+                },
+                {
+                    img: '../img/raccoon.svg',
+                    nameListUser: 'Vincent Sparks',
+                    ageListUser: 54,
+                    phoneListUser: '8 (986) 653-9041',
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 8
+                },
+                {
+                    img: '../img/sheep.svg',
+                    nameListUser: 'Mark Rhodes',
+                    ageListUser: 12,
+                    phoneListUser: '8 (467) 653-9041',
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 9
+                },
+                {
+                    img: '../img/fox.svg',
+                    nameListUser: 'Gordon Daniels',
+                    ageListUser: 32,
+                    phoneListUser: '8 (978) 653-9041',
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 10
+                },
+                {
+                    img: '../img/koala.svg',
+                    nameListUser: 'Ella Parks',
+                    ageListUser: 43,
+                    phoneListUser: '8 (232) 653-9041',
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 11
+                },
+                {
+                    img: '../img/lion.svg',
+                    nameListUser: 'Luis Jacobs',
+                    ageListUser: 45,
+                    phoneListUser: '8 (547) 653-9041',
+                    textUser: 'East Slavic civilisation spread all the way to Alaska.',
+                    id: 12
+                },
+                {
+                    img: '../img/penguin.svg',
+                    nameListUser: 'Phillip Daniels',
+                    ageListUser: 65,
+                    phoneListUser: '8 (629) 653-9041',
+                    textUser: 'Owmeco jen be tezpoksim vojuz parro vuri da ce wioveis ko hojmaso ahe civ bapdedam.',
+                    id: 13
+                },
+                {
+                    img: '../img/cat.svg',
+                    nameListUser: 'Hettie Soto',
+                    ageListUser: 67,
+                    phoneListUser: '8 (123) 653-9041',
+                    textUser: 'In the beginning there was Kyiv. Long before Ukraine and Russia existed.',
+                    id: 14
+                }
+            ],
             term: '',
-
             selectUser: null
         };
 
@@ -173,8 +286,12 @@ export default class App extends Component {
     }
 
     onUpdateSearch(term) {
-        this.setState({term})
-
+        if (term.length === 0) {
+            const data = this.state.dataDefault.sort((a, b) => a.id > b.id ? 1: -1);
+            return this.setState({data})
+        }
+        const searchFilter = this.state.data.filter((item) => item.nameListUser.toLowerCase().indexOf(term.toLowerCase()) > -1);
+        this.setState({data : searchFilter});
     }
 
     onCharSelected = id => {
